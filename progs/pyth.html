@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="team.png" type="png">
+    <title>Host1</title>
+    <style>
+        .code-container {
+            display: none;
+            position: relative;
+        }
+
+        .codes {
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        .buttons{
+            display: block;
+        }
+        .code-toggle{
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // JavaScript function to copy code to clipboard
+        function copyCodeToClipboard(codeId) {
+            var codeSection = document.getElementById(codeId);
+            var textArea = document.createElement("textarea");
+            textArea.value = codeSection.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+        }
+        // JavaScript function to copy code when program number is clicked
+        function copyCodeOnClick(programNumber) {
+            var codeId = 'code' + programNumber;
+            copyCodeToClipboard(codeId);
+        }
+    </script>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code1a')">Copy</button>
+        <pre id="code1a" class="white">
+            <code class="codes">
+m1 = int(input("Enter marks for test1 : "))
+m2 = int(input("Enter marks for test2 : "))
+m3 = int(input("Enter marks for test3 : "))
+if m1 <= m2 and m1 <= m3:
+    avgmarks = (m2 + m3) / 2
+elif m2 <= m1 and m2 <= m3:
+    avgmarks = (m1 + m3) / 2
+elif m3 <= m1 and m3 <= m2:
+    avgmarks = (m1 + m2) / 2 
+
+print("Average of best two test marks out of three test’s marks is", avgmarks)
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code1b')">Copy</button>
+        <pre id="code1b" class="white">
+            <code class="codes">
+string = input("Enter a number: ")
+if string == string[::-1]:
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+
+for i in range(10):
+    if string.count(str(i)) > 0:
+        print(i, "appears", string.count(str(i)), "times");
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code2a')">Copy</button>
+        <pre id="code2a" class="white">
+            <code class="codes">
+def fn(n):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return fn(n - 1) + fn(n - 2)
+
+num = int(input("Enter a number : "))
+if num > 0:
+    print("fn(", num, ") = ", fn(num))
+else:
+    print("Error in input")
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code2b')">Copy</button>
+        <pre id="code2b" class="white">
+            <code class="codes">
+def bin2Dec(val):
+    dec = 0
+    i = 0
+    for dig in val[::-1]:
+        dec += int(dig) * 2**i
+        i += 1
+    return dec
+
+def oct2Hex(val):
+    dec = 0
+    i = 0
+    for dig in val[::-1]:
+        dec += int(dig) * 8**i
+        i += 1
+    newlist = []
+    while dec != 0:
+        newlist.append(dec % 16)
+        dec = dec // 16
+    
+    newlist1 = []
+    for elem in newlist[::-1]:
+        if elem <= 9:
+            newlist1.append(str(elem))
+        else:
+            newlist1.append(chr(ord('A') + (elem - 10)))
+    hex_val = "".join(newlist1)
+    return hex_val
+
+num1 = input("Enter a binary number : ")
+print(bin2Dec(num1))
+num2 = input("Enter an octal number : ")
+print(oct2Hex(num2))
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code3a')">Copy</button>
+        <pre id="code3a" class="white">
+            <code class="codes">
+sentence = input("Enter a sentence\n")
+wordlist = sentence.split(" ")
+wcount = len(wordlist)
+dcount, ucount, lcount, scount = 0, 0, 0, 0
+for ch in sentence:
+    if ch >= '0' and ch <= '9':
+        dcount += 1
+    elif ch >= 'A' and ch <= 'Z':
+        ucount += 1
+    elif ch >= 'a' and ch <= 'z':
+        lcount += 1
+    elif ch == ' ':
+        scount += 1
+print("This Sentence has\n")
+print(wcount, "Words")
+print(dcount, "digits")
+print(ucount, "Upper Case Letters")
+print(lcount, "Lower Case Letters")
+print(scount, "Spaces")
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code3b')">Copy</button>
+        <pre id="code3b" class="white">
+            <code class="codes">
+str1 = input("Enter String 1\n")
+str2 = input("Enter String 2\n")
+len1 = len(str1)
+len2 = len(str2)
+if len1 > len2:
+    short = len2
+    long = len1
+else:
+    short = len1
+    long = len2
+matchcount = 0
+for i in range(short):
+    if str1[i] == str2[i]:
+        matchcount += 1
+similarity = matchcount / long
+print("Similarity between two given strings:", similarity)
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code4a')">Copy</button>
+        <pre id="code4a" class="white">
+            <code class="codes">
+import random
+
+def insertion_sort(lst):
+    for i in range(1, len(lst)):
+        temp = lst[i]
+        j = i - 1
+        while j >= 0 and lst[j] > temp:
+            lst[j + 1] = lst[j]
+            j -= 1
+        lst[j + 1] = temp
+my_list = []
+
+def merge_sort(lst):
+    if len(lst) > 1:
+        mid = len(lst) // 2
+        left_half = lst[:mid]
+        right_half = lst[mid:]
+        merge_sort(left_half)
+        merge_sort(right_half)
+        i = j = k = 0
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                lst[k] = left_half[i]
+                i += 1
+            else:
+                lst[k] = right_half[j]
+                j += 1
+            k += 1
+        while i < len(left_half):
+            lst[k] = left_half[i]
+            i += 1
+            k += 1
+        while j < len(right_half):
+            lst[k] = right_half[j]
+            j += 1
+            k += 1
+
+for i in range(10):
+    my_list.append(random.randint(0, 999))
+print("\nUnsorted List")
+print(my_list)
+print("Sorting using Insertion Sort")
+insertion_sort(my_list)
+print(my_list)
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code4b')">Copy</button>
+        <pre id="code4b" class="white">
+            <code class="codes">
+rstr = input("Enter a Roman Number: ")
+rdict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+ans = 0
+for i in range(len(rstr)):
+    if i + 1 != len(rstr) and rdict[rstr[i]] < rdict[rstr[i + 1]]:
+        ans = ans - rdict[rstr[i]]
+    else:
+        ans = ans + rdict[rstr[i]]
+print(ans)
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code5a')">Copy</button>
+        <pre id="code5a" class="white">
+            <code class="codes">
+import re
+
+def isphonenumber(numStr):
+    if len(numStr) != 12:
+        return False
+    for i in range(len(numStr)):
+        if i == 3 or i == 7:
+            if numStr[i] != "-":
+                return False
+        else:
+            if not numStr[i].isdigit():
+                return False
+    return True
+
+def chkphonenumber(numStr):
+    ph_no_pattern = re.compile(r'^\d{3}-\d{3}-\d{4}$')
+    mo = ph_no_pattern.search(numStr)
+    if mo is not None:
+        return True
+    else:
+        return False
+
+ph_num = input("Enter a phone number : ")
+print("Without using Regular Expression")
+if isphonenumber(ph_num):
+    print("Valid phone number")
+else:
+    print("Invalid phone number")
+
+print("Using Regular Expression")
+if chkphonenumber(ph_num):
+    print("Valid phone number")
+else:
+    print("Invalid phone number")
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code5b')">Copy</button>
+        <pre id="code5b" class="white">
+            <code class="codes">
+import re
+
+phone_regex = re.compile(r'\+\d{12}')
+email_regex = re.compile(r'[A-Za-z0-9._]+@[A-Za-z]+\.[A-Z|a-z]{2,}')
+
+f = open("filename.txt", "r")
+
+
+for line in f:
+    matches = phone_regex.findall(line)
+
+    for match in matches:
+        print(match)
+    matches = email_regex.findall(line)
+
+    for match in matches:
+        print(match)
+f.close()
+            </code>
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code6a')">Copy</button>
+        <pre id="code6a" class="white">
+            <code class="python-code">
+import os
+import sys
+
+fname = input("Enter the filename: ")
+if not os.path.isfile(fname):
+    print("File", fname, "doesn't exist")
+    sys.exit(0)
+
+infile = open(fname, "r")
+lineList = infile.readlines()
+lineListcnt = len(lineList)
+
+nlines = int(input('Enter the number of lines to display: '))
+
+if nlines <= lineListcnt:
+    for i in range(nlines):
+        print(i + 1, ":", lineList[i])
+
+    word = input("Enter a word: ")
+    cnt = 0
+    cnt1 = 1
+
+    for line in lineList:
+        if cnt1 <= nlines:
+            cnt += line.count(word)
+            cnt1 += 1
+
+    print("The word", word, "appears", cnt, "times in the file")
+else:
+    print('The given number of lines is not present in the file')
+
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code6b')">Copy</button>
+        <pre id="code6b" class="white">
+            <code class="python-code">
+import sys
+import os
+import zipfile
+
+folder = input('Enter the folder name to be zipped: ')
+
+if not os.path.isdir(folder):
+    print('The given Folder name does not exist')
+    sys.exit(0)
+
+foldername = folder + '.zip'
+print('Creating ' + foldername + '...')
+BackupZipfile = zipfile.ZipFile(foldername, 'w')
+
+for foldername, subfolders, filenames in os.walk(folder):
+    print('Adding files in ' + foldername + '...')
+    BackupZipfile.write(foldername)
+
+    for filename in filenames:
+        BackupZipfile.write(os.path.join(foldername, filename))
+
+BackupZipfile.close()
+print('Job Done')
+
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code7a')">Copy</button>
+        <pre id="code7a" class="white">
+            <code class="python-code">
+import math
+
+class Shape:
+    def __init__(self):
+        self.area = 0
+        self.name = ""
+
+    def showArea(self):
+        print("The area of the", self.name, "is", self.area, "units")
+
+class Circle(Shape):
+    def __init__(self, radius):
+        super().__init__()
+        self.name = "Circle"
+        self.radius = radius
+
+    def calcArea(self):
+        self.area = math.pi * self.radius * self.radius
+
+class Rectangle(Shape):
+    def __init__(self, length, breadth):
+        super().__init__()
+        self.name = "Rectangle"
+        self.length = length
+        self.breadth = breadth
+
+    def calcArea(self):
+        self.area = self.length * self.breadth
+
+class Triangle(Shape):
+    def __init__(self, base, height):
+        super().__init__()
+        self.name = "Triangle"
+        self.base = base
+        self.height = height
+
+    def calcArea(self):
+        self.area = self.base * self.height / 2
+
+c1 = Circle(5)
+c1.calcArea()
+c1.showArea()
+
+r1 = Rectangle(5, 4)
+r1.calcArea()
+r1.showArea()
+
+t1 = Triangle(3, 4)
+t1.calcArea()
+t1.showArea()
+
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code7b')">Copy</button>
+        <pre id="code7b" class="white">
+            <code class="python-code">
+class Employee:
+    def __init__(self):
+        self.name = ""
+        self.empId = ""
+        self.dept = ""
+        self.salary = 0
+
+    def getEmpDetails(self):
+        self.name = input("Enter Employee name: ")
+        self.empId = input("Enter Employee ID: ")
+        self.dept = input("Enter Employee Dept: ")
+        self.salary = int(input("Enter Employee Salary: "))
+
+    def showEmpDetails(self):
+        print("Employee Details")
+        print("Name: ", self.name)
+        print("ID: ", self.empId)
+        print("Dept: ", self.dept)
+        print("Salary: ", self.salary)
+
+    def updtSalary(self):
+        self.salary = int(input("Enter new Salary: "))
+        print("Updated Salary", self.salary)
+
+e1 = Employee()
+e1.getEmpDetails()
+e1.showEmpDetails()
+e1.updtSalary()
+
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code8a')">Copy</button>
+        <pre id="code8a" class="white">
+            <code class="python-code">
+class PaliStr:
+    def __init__(self):
+        self.isPali = False
+
+    def chkPalindrome(self, myStr):
+        if myStr == myStr[::-1]:
+            self.isPali = True
+        else:
+            self.isPali = False
+        return self.isPali
+
+class PaliInt(PaliStr):
+    def chkPalindrome(self, val):
+        temp = val
+        rev = 0
+        while temp != 0:
+            dig = temp % 10
+            rev = (rev * 10) + dig
+            temp = temp // 10
+        if val == rev:
+            self.isPali = True
+        else:
+            self.isPali = False
+        return self.isPali
+
+st = input("Enter a string: ")
+stObj = PaliStr()
+
+if stObj.chkPalindrome(st):
+    print("Given string is a Palindrome")
+else:
+    print("Given string is not a Palindrome")
+
+val = int(input("Enter an integer: "))
+intObj = PaliInt()
+
+if intObj.chkPalindrome(val):
+    print("Given integer is a Palindrome")
+else:
+    print("Given integer is not a Palindrome")
+
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code9a')">Copy</button>
+        <pre id="code9a" class="white">
+            <code class="python-code">
+import requests
+import os
+from bs4 import BeautifulSoup
+
+# Set the URL of the first XKCD comic
+url = 'https://xkcd.com'
+
+# Create a folder to store the comics
+if not os.path.exists('xkcd_comics'):
+    os.makedirs('xkcd_comics')
+
+# Loop through all the comics
+while True:
+    # Download the page content
+    res = requests.get(url)
+    res.raise_for_status()
+
+    # Parse the page content using BeautifulSoup
+    soup = BeautifulSoup(res.text, 'html.parser')
+
+    # Find the URL of the comic image
+    comic_elem = soup.select('#comic img')
+
+    if comic_elem == []:
+        print('Could not find comic image.')
+    else:
+        comic_url = 'https:' + comic_elem[0].get('src')
+
+        # Download the comic image
+        print(f'Downloading {comic_url}...')
+        res = requests.get(comic_url)
+        res.raise_for_status()
+
+        # Save the comic image to the xkcd_comics folder
+        image_file = open(os.path.join('xkcd_comics', os.path.basename(comic_url)), 'wb')
+        for chunk in res.iter_content(100000):
+            image_file.write(chunk)
+        image_file.close()
+
+    # Get the URL of the previous comic
+    prev_link = soup.select('a[rel="prev"]')[0]
+
+    if not prev_link:
+        break
+
+    url = 'https://xkcd.com' + prev_link.get('href')
+
+print('All comics downloaded.')
+
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code9b')">Copy</button>
+        <pre id="code9b" class="white">
+            <code class="python-code">
+from openpyxl import Workbook
+from openpyxl.styles import Font
+
+wb = Workbook()
+sheet = wb.active
+sheet.title = "Language"
+wb.create_sheet(title="Capital")
+
+lang = ["Kannada", "Telugu", "Tamil"]
+state = ["Karnataka", "Telangana", "Tamil Nadu"]
+capital = ["Bengaluru", "Hyderabad", "Chennai"]
+code = ['KA', 'TS', 'TN']
+
+sheet.cell(row=1, column=1).value = "State"
+sheet.cell(row=1, column=2).value = "Language"
+sheet.cell(row=1, column=3).value = "Code"
+
+ft = Font(name='Times New Roman', bold=True)
+
+for row in sheet["A1:C1"]:
+    for cell in row:
+        cell.font = ft
+
+for i in range(2, 5):
+    sheet.cell(row=i, column=1).value = state[i - 2]
+    sheet.cell(row=i, column=2).value = lang[i - 2]
+    sheet.cell(row=i, column=3).value = code[i - 2]
+
+wb.save("demo.xlsx")
+
+sheet = wb["Capital"]
+sheet.cell(row=1, column=1).value = "State"
+sheet.cell(row=1, column=2).value = "Capital"
+sheet.cell(row=1, column=3).value = "Code"
+
+ft = Font(name='Times New Roman', bold=True)
+
+for row in sheet["A1:C1"]:
+    for cell in row:
+        cell.font = ft
+
+for i in range(2, 5):
+    sheet.cell(row=i, column=1).value = state[i - 2]
+    sheet.cell(row=i, column=2).value = capital[i - 2]
+    sheet.cell(row=i, column=3).value = code[i - 2]
+
+wb.save("demo.xlsx")
+
+srchCode = input("Enter state code for finding capital: ")
+
+for i in range(2, 5):
+    data = sheet.cell(row=i, column=3).value
+    if data == srchCode:
+        print("Corresponding capital for code", srchCode, "is", sheet.cell(row=i, column=2).value)
+
+sheet = wb["Language"]
+srchCode = input("Enter state code for finding language: ")
+
+for i in range(2, 5):
+    data = sheet.cell(row=i, column=3).value
+    if data == srchCode:
+        print("Corresponding language for code", srchCode, "is", sheet.cell(row=i, column=2).value)
+
+wb.close()
+
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code10a')">Copy</button>
+        <pre id="code10a" class="white">
+            <code class="python-code">
+from PyPDF2 import PdfWriter, PdfReader
+
+num = int(input("Enter page number you want to combine from multiple documents: "))
+
+pdf1 = open('birds.pdf', 'rb')
+pdf2 = open('birdspic.pdf', 'rb')
+
+pdf_writer = PdfWriter()
+
+pdf1_reader = PdfReader(pdf1)
+page = pdf1_reader.pages[num - 1]
+pdf_writer.add_page(page)
+
+pdf2_reader = PdfReader(pdf2)
+page = pdf2_reader.pages[num - 1]
+pdf_writer.add_page(page)
+
+output = open('output.pdf', 'wb')
+pdf_writer.write(output)
+output.close()
+    
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code10b')">Copy</button>
+        <pre id="code10b" class="white">
+            <code class="python-code">
+import json
+
+# Open the JSON file
+file = open('weather_data.json', 'r')
+data = file.read()
+
+# Load the data in JSON format
+obj = json.loads(data)
+
+# Extract the required weather data
+current_temp = obj['main']['temp']
+humidity = obj['main']['humidity']
+weather_desc = obj['weather'][0]['description']
+
+# Display the weather data
+print(f"Current temperature: {current_temp}°C")
+print(f"Humidity: {humidity}%")
+print(f"Weather description: {weather_desc}")
+
+'''
+{
+    "main": {
+        "temp": 25.5,
+        "humidity": 70
+    },
+    "weather": [
+        {
+            "description": "Partly cloudy"
+        }
+    ]
+  }
+  
+'''
+            </code>
+        </pre>
+    </div>
+
+    <!-- Program Number buttons with copy functionality -->
+    <div class="buttons">
+        <button class="code-toggle" onclick="copyCodeOnClick('1a')">1a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('1b')">1b</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('2a')">2a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('2b')">2b</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('3a')">3a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('3b')">3b</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('4a')">4a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('4b')">4b</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('5a')">5a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('5b')">5b</button>
+        <br>
+        <button class="code-toggle" onclick="copyCodeOnClick('6a')">6a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('6b')">6b</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('7a')">7a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('7b')">7b</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('8a')">8a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('9a')">9a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('9b')">9b</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('10a')">10a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('10b')">10b</button>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="team.png" type="png">
+    <title>Host</title>
+    <style>
+        .code-container {
+            display: none;
+            position: relative;
+        }
+
+        .codes {
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        .buttons {
+            display: block;
+        }
+
+        .code-toggle {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // JavaScript function to copy code to clipboard
+        function copyCodeToClipboard(codeId) {
+            var codeSection = document.getElementById(codeId);
+            var textArea = document.createElement("textarea");
+            textArea.value = codeSection.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+        }
+
+        // JavaScript function to copy code when program number is clicked
+        function copyCodeOnClick(programNumber) {
+            var codeId = 'code' + programNumber;
+            copyCodeToClipboard(codeId);
+        }
+    </script>
+
+
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code1a')">Copy</button>
+        <pre id="code1a" class="white">
+            <code class="">
+Your code here...1
+            </code>
+        </pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-button" onclick="copyCodeToClipboard('code1b')">Copy</button>
+        <pre id="code1b" class="white">
+            <code class="">
+Your code here...22
+            </code>
+        </pre>
+    </div>
+
+    <!-- Program Number buttons with copy functionality -->
+    <div class="buttons">
+
+        <button class="code-toggle" onclick="copyCodeOnClick('1a')">1a</button>
+        <button class="code-toggle" onclick="copyCodeOnClick('1b')">1b</button>
+    </div>
+
+</body>
+
+</html>

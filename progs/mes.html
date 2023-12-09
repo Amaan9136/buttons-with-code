@@ -1,0 +1,175 @@
+<!-- MES-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="team.png" type="png">
+  <title>Host2</title>
+  <style>
+    .white {
+      padding: 20px;
+      padding-left: 0px;
+      color: rgb(0, 0, 0);
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+1:
+<pre class="white">
+    AREA  MULTIPLY,CODE, READONLY
+
+    ENTRY
+        MOV R1,#0002
+        MOV R2,#0004
+        MUL R3, R1, R2
+        NOP
+    END
+</pre>
+2:
+<pre class="white">
+    AREA SUM,CODE, READONLY
+    ENTRY
+        MOV R1,#10
+        MOV R2,#0
+    LOOP
+        ADD R2,R2,R1
+        SUBS R1,#0x01
+        BNE LOOP
+    BACK
+        B  BACK
+    END
+</pre>
+3:
+<pre class="white">
+    AREA  FACTORIAL , CODE, READONLY
+    ENTRY
+        MOV R0, #7
+        MOV R1, #1
+    FACT
+        MUL  R2, R1, R0
+        SUBS R0,R0,#1
+        MOV R1,R2
+        CMP R0, #1
+        BNE FACT
+    BACK
+        B  BACK
+    END
+</pre>
+4:
+<pre class="white">
+    AREA  ADDITION , CODE, READONLY
+    ENTRY
+        MOV R5,#6
+        MOV R0,#0
+        LDR R1,=VALUE1
+    LOOP
+        LDRH R3,[R1],#02
+        ADD R0,R0,R3
+        SUBS R5,R5,#1
+        BNE LOOP
+        LDR R4,=0x40000000
+        STR R0,[R4]
+    JMP B JMP
+VALUE1  DCW 0X1111,0X2222,0X3333,0X4444,0X5555,0X6666
+    END
+</pre>
+5:
+<pre class="white">
+    AREA  SQUARE , CODE, READONLY
+    ENTRY
+        LDR R0, = TABLE1
+        MOV R1,#0X04
+        MOV R2,#00
+        LDRB R2,[R0,R1]
+    BACK B BACK
+TABLE1
+    DCB  00,01,04,09,16,25,36,49,64,81,100
+    END
+</pre>
+6:
+<pre class="white">
+    AREA  LARGEST , CODE, READONLY
+    ENTRY
+        MOV R5,#4
+        LDR R1,=VALUE1
+        LDR R2,[R1],#4
+    LOOP
+        LDR R4,[R1],#4
+        CMP R2,R4
+        MOVCC R2,R4
+        SUBS R5,#1
+        BNE LOOP
+    BACK B BACK
+VALUE1  DCD 0X44444444, 0X22222222, 0X11111111, 0X33333333, 0XAAAAAAAA
+    END
+</pre>
+<pre class="white">
+    AREA  SMALLEST , CODE, READONLY
+    ENTRY
+        MOV R5,#4
+        LDR R1,=VALUE1
+        LDR R2,[R1],#4
+    LOOP
+        LDR R4,[R1],#4
+        CMP R2,R4
+        MOVCS R2,R4
+        SUBS R5,#1
+        BNE LOOP
+    BACK B BACK
+VALUE1  DCD 0X44444444, 0X22222222, 0X11111111, 0X33333333, 0XAAAAAAAA
+    END
+</pre>
+7:
+<pre class="white">
+    AREA ASCENDING,CODE,READONLY
+    ENTRY
+        MOV R8,#04
+    AGAIN
+        LDR R0,=0X40000000
+        MOV R5,#03
+    LOOP LDR R2,[R0],#04
+        LDR R3,[R0]
+        CMP R2,R3
+        BLT LOOP2
+        STR R2,[R0],#-04
+        STR R3,[R0],#04
+        
+    LOOP2   SUBS R5,R5,#1
+        CMP R5,#0
+        BNE LOOPLDR
+        SUBS R8,R8,#1
+        CMP R8,#0
+        BNE AGAIN
+        
+    STOP BSTOP
+    END
+</pre>
+<pre class="white">
+    AREA DECENDING,CODE, READONLY
+    ENTRY
+        MOV R8,#04
+    AGAIN
+        LDR R0,=0X40000000
+        MOV R5,#03
+    LOOP
+        LDR R2,[R0],#04
+        LDR R3,[R0]
+        CMP R2,R3
+        BGT LOOP2
+        STR R2,[R0],#-04
+        STR R3,[R0],#04
+        
+    LOOP2   SUBS R5,R5,#1
+        CMP R5,#0
+        BNE LOOP
+        SUBS R8,R8,#1
+        CMP R8,#0
+        BNE AGAIN
+        
+    STOP B  STOP
+    END
+</pre>
+</body>
+</html>
